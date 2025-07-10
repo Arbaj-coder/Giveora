@@ -5,7 +5,7 @@ const Footer = () => {
 
   return (
     <footer className='bg-gray-900 text-white flex items-center justify-center px-4 h-16'>
-        <p className='text-center'>Copyright &copy; {currentYear} Get me A Chai - All rights reserved!</p>
+        <p className='text-center'>Copyright &copy; {currentYear} Giveova - All rights reserved!</p>
     </footer>
   )
 }
