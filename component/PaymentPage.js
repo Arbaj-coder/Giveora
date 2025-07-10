@@ -27,7 +27,7 @@ const PaymentPage = ({ username }) => {
         if(searchParams.get("paymentdone") == "true"){
         toast('Thanks for your donation!', {
             position: "top-right",
-            autoClose: 5000,
+            autoClose: 2500,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -36,7 +36,9 @@ const PaymentPage = ({ username }) => {
             theme: "light",
             transition: Bounce,
             });
-            router.push(`/name/${username}`)
+              setTimeout(() => {
+    router.push(`/name/${username}`);
+  }, 3500);
         }
      
     }, [])
@@ -62,14 +64,14 @@ const PaymentPage = ({ username }) => {
             "key": currentUser.razorpayid, // Enter the Key ID generated from the Dashboard
             "amount": amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             "currency": "INR",
-            "name": "Get Me A Chai", //your business name
+            "name": "Giveora", //your business name
             "description": "Test Transaction",
             "image": "https://example.com/your_logo",
             "order_id": orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
             "callback_url": `${process.env.NEXT_PUBLIC_URL}/api/razorpay`,
             "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
-                "name": "Gaurav Kumar", //your customer's name
-                "email": "gaurav.kumar@example.com",
+                "name": `${username}`, //your customer's name
+                "email": `${localStorage.getItem('email')}`,
                 "contact": "9000090000" //Provide the customer's phone number for better conversion rates 
             },
             "notes": {
